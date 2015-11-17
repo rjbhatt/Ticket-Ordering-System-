@@ -1,0 +1,168 @@
+#include "stdafx.h"
+
+#include "stdafx.h"
+#include <iostream>
+#include <cctype>
+#include <cstdlib>
+#include <iomanip>
+
+
+using namespace std;
+
+void menu()
+{
+	cout << "\n\n From the list of teams, what team would you like?:\n";
+
+	cout << "Ticket Ordering Menu\n\n"
+		<< "(1) Pistons $20\n"
+		<< "(2) Red Wings $25\n"
+		<< "(3) Tigers $30 \n"
+		<< "(4) Lions $35 \n"
+		<< "(0) Exit\n";
+	cout << "Please Enter Your Team Choice\n";
+}// end menu function
+
+double Pistons(int numT, int  &numP, double price, double &AmountofPistons, double &FinalTotal)
+{
+	double purchasecost; //declare local variable
+	purchasecost = price * numT;
+	numP = numP + numT; // To update the number of Pistons Tickets
+	AmountofPistons = AmountofPistons + purchasecost; // To Update Pistons Total
+	FinalTotal = FinalTotal + purchasecost; // To Update Grand Total
+	return purchasecost;
+}//end Pistons Function 
+
+double RedWings(int numT, int  &numR, double price, double &AmountofRedWings, double &FinalTotal)
+{
+	double purchasecost; //declare local variable
+	purchasecost = price * numT;
+	numR = numR + numT; // To update the number of Pistons Tickets
+	AmountofRedWings = AmountofRedWings + purchasecost; // To Update Pistons Total
+	FinalTotal = FinalTotal + purchasecost; // To Update Grand Total
+	return purchasecost;
+}//end Red Wings Function 
+
+double Tigers(int numT, int  &numTi, double price, double &AmountofTigers, double &FinalTotal)
+{
+	double purchasecost; //declare local variable
+	purchasecost = price * numT;
+	numTi = numTi + numT; // To update the number of Pistons Tickets
+	AmountofTigers = AmountofTigers + purchasecost; // To Update Pistons Total
+	FinalTotal = FinalTotal + purchasecost; // To Update Grand Total
+	return purchasecost;
+}//end Tigers function 
+
+double Lions(int numT, int  &numL, double price, double &AmountofLions, double &FinalTotal)
+{
+	double purchasecost; //declare local variable
+	purchasecost = price * numT;
+	numL = numL + numT; // To update the number of Pistons Tickets
+	AmountofLions = AmountofLions + purchasecost; // To Update Pistons Total
+	FinalTotal = FinalTotal + purchasecost; // To Update Grand Total
+	return purchasecost;
+}//end function 
+
+int main()
+{//start main
+
+	int order = 1;
+	int sentinel = 0;
+	int numP = 0; // reference variable
+	int numR = 0; // reference variable
+	int numTi = 0; // reference variable
+	int numL = 0; // reference variable
+	int numT = 0;
+	double PistonsPrice = 20;
+	double RedWingsPrice = 25;
+	double TigersPrice = 30;
+	double LionsPrice = 35;
+	double AmountofPistons = 0;// reference variable
+	double AmountofRedWings = 0; // reference variable
+	double AmountofTigers = 0; // reference variable
+	double AmountofLions = 0; // reference variable
+	double transaction[100]; // transaction array 
+	double FinalTotal = 0; // reference variable
+	int i = 1; // initializes loop variable 
+	int j = 1; // initializes second loop variable
+
+	while (order != sentinel)
+
+	{// begin loop
+
+		menu(); // call menu 
+
+		cin >> order;
+
+		switch (order)
+		{// begin switch 
+
+		case 0:
+
+			cout << "\n\n Thank You For Using ABC Tickets\n\n";
+			cout << "Here is a Confirmation of Your Order:\n\n";
+			cout << "Your Total For " << numP << " Pistons Tickets  $" << AmountofPistons << endl;
+			cout << "Your Total For " << numR << " Red Wings Tickets  $" << AmountofRedWings << endl;
+			cout << "Your Total For " << numTi << " Tigers Tickets  $" << AmountofTigers << endl;
+			cout << "Your Total For " << numL << " Lions Tickets  $" << AmountofLions << endl;
+			cout << "\n transaction summary " << endl;
+			for (j = 1; j < i; j++)
+			{ // begin loop
+				cout << "transaction " << j << " $" << transaction[j] << endl;
+			} // end loop 
+
+			cout << "Your Final Total Is: $" << FinalTotal << endl << endl;
+			break;
+
+		case 1:
+
+			cout << "How many Pistons Tickets would you like to order?:\n";
+			cin >> numT;
+			transaction[i] = Pistons(numT, numP, PistonsPrice, AmountofPistons, FinalTotal);
+			cout << "Your Current Cost for Pistons Tickets Are $" << transaction[i] << endl << endl;
+			break;
+
+
+
+
+		case 2:
+			cout << "How many Red Wings Tickets would you like to order?:\n";
+			cin >> numT;
+			transaction[i] = RedWings(numT, numR, RedWingsPrice, AmountofRedWings, FinalTotal);
+			cout << "Your Current Cost for Red Wings Tickets Are $" << transaction[i] << endl << endl;
+			break;
+
+
+		case 3:
+			cout << "How many Tigers Tickets would you like to order?:\n";
+			cin >> numT;
+			transaction[i] = Tigers(numT, numTi, TigersPrice, AmountofTigers, FinalTotal);
+			cout << "Your Current Cost for Tigers Tickets Are $" << transaction[i] << endl << endl;
+			break;
+
+
+
+		case 4:
+			cout << "How many Lions Tickets would you like to order?:\n";
+			cin >> numT;
+			transaction[i] = Lions(numT, numL, LionsPrice, AmountofLions, FinalTotal);
+
+			cout << "Your Current Cost for Lions Tickets Are $" << transaction[i] << endl << endl;
+			break;
+
+
+
+		default: cout << "Please choose a valid item from our list\n";
+			i--; // decrement i to reflect the array element 
+			break;
+		} // end switch
+		i++; // increment i for the loop 
+
+	} // end loop
+
+
+	system("PAUSE");
+	return 0;
+}// end main
+
+//Rakshit (Rocky) Bhatt 
+//Copyright 2015 
